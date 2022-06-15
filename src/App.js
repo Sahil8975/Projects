@@ -6,28 +6,27 @@ import Profile from './Pages/Profile/Profile'
 import Table from './Pages/Table/Table'
 // import Navbar from './Component/Navbar'
 // import Layout from './layout/Layout'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import Header from './Header/Header'
+import { Switch, Route } from 'react-router-dom';
+import Header from './Header/Header'
+import login from './Pages/Login/Login'
 
 const App = () => {
   return (
-    <div className='abc'>
-  
-    
-    {/* <Layout> */}
-    {/* <Header/> */}
+    // <div>
+    <div className='abc' style={{
+      paddingTop: 80
+    }}>
+     
+      <Header />
       <Switch>
-      <Route exact path='/' component={Home} />
-        <Route  path='/profile' component={Profile} />
-        <Route  path='/details' component={Details} />
-        <Route  path='/table' component={Table} />
-        <Route  path='/forms' component={Forms} />
+      <Route exact path='/login' component={login} />
+        <Route exact path='/' component={Home} />
+        <Route path='/profile' component={Profile} />
+        <Route path='/details' component={Details} />
+        <Route path='/table' component={Table} />
+        <Route path='/forms' component={Forms} />
+        <Route  path='/login' component={login} />
       </Switch>
-      {/* </Header> */}
-      {/* </Layout> */}
-      
-
-
     </div>
   )
 }

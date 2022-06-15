@@ -1,5 +1,5 @@
-import React from "react";
-import {Container, Toolbar, Typography, List, ListItem, Drawer, AppBar, IconButton} from "@mui/material";
+import React, { useEffect } from "react";
+import {Container, Toolbar, Typography, List, ListItem, Drawer, AppBar, IconButton, Button} from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
 // import HomeIcon from '@mui/icons-material/Home';
@@ -9,6 +9,10 @@ import { useHistory, useLocation } from "react-router-dom";
 import { path } from "./path";
 import { ListItemIcon, ListItemText } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import {Box} from "@material-ui/core";
+// import {useNavigate} from "react-router-dom"
+// import { NavLink } from "react-router-dom";
+
 
 
 
@@ -40,6 +44,25 @@ function Header(){
   const [opens, setOpens] = useState(false);
   const history = useHistory();
   const location= useLocation();
+  const [isAuth, setIsAuth] = useState(true)
+  const [logout, setLogout] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!localStorage.getItem("auth")) history.push("/login");
+  }, [logout]);
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("auth");
+    setLogout(true);
+  };
+  // const navigate= NavLink
+
+  // useEffect(()=>{
+  //   if(!localStorage.getItem('token')){
+  //     navigate('/login')
+  //   }
+  // })
   return (
   <Container className={classes.root}>
       <Drawer open={opens} onClose={() => setOpens(false)}>
@@ -76,6 +99,23 @@ function Header(){
         >
             <DehazeIcon/>
           </IconButton> 
+          <Box
+  m={1} //margin
+  display="flex"
+  justifyContent="flex-start"
+  alignItems="flex-start"
+
+>
+    <button onClick={logoutHandler} className="btn btn-primary text-left">
+        Logout
+      </button>
+  {/* <Button variant="contained" color="primary" sx={{ height: 40 }}>
+    Logout
+  </Button> */}
+</Box>
+          {/* <Button onClick={()=>{
+            localStorage.removeItem('token')
+          }}>Logout</Button> */}
         </Toolbar>
       </AppBar>
 

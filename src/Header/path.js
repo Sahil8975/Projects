@@ -32,4 +32,11 @@ export const path=[
         path:'/forms',
         icon:<HomeIcon/>
     },
+    {
+        id:5,
+        title:'Login',
+        path:'/login',
+        icon:<HomeIcon/>
+    },
+
 ]

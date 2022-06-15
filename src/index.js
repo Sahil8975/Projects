@@ -4,16 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Header from './Header/Header';
+// import Header from './Header/Header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <h1>Sahil</h1>,
   // <React.StrictMode>
     <Router>
-      <Header/>
-       <App />
-       
+       <App />      
     </Router>
    
   //  </React.StrictMode>
