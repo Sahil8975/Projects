@@ -10,6 +10,7 @@ import { path } from "./path";
 import { ListItemIcon, ListItemText } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import {Box} from "@material-ui/core";
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 // import {useNavigate} from "react-router-dom"
 // import { NavLink } from "react-router-dom";
 
@@ -100,22 +101,18 @@ function Header(){
             <DehazeIcon/>
           </IconButton> 
           <Box
-  m={1} //margin
-  display="flex"
-  justifyContent="flex-start"
-  alignItems="flex-start"
-
->
-    <button onClick={logoutHandler} className="btn btn-primary text-left">
-        Logout
-      </button>
-  {/* <Button variant="contained" color="primary" sx={{ height: 40 }}>
-    Logout
-  </Button> */}
-</Box>
-          {/* <Button onClick={()=>{
-            localStorage.removeItem('token')
-          }}>Logout</Button> */}
+            m={1}
+            display="flex"
+            justifyContent="flex-end"
+            alignItems="flex-end"
+          >
+              <Button onClick={logoutHandler} type="submit"
+                  variant="contained"
+                  endIcon={<LogoutOutlinedIcon />}
+              >
+               </Button>
+          </Box>
+         
         </Toolbar>
       </AppBar>
 
