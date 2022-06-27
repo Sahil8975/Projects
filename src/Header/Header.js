@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {Container, Toolbar, Typography, List, ListItem, Drawer, AppBar, IconButton, Button} from "@mui/material";
+import {Container, Toolbar, Typography, List, ListItem, Drawer, AppBar, IconButton, Button, Avatar, MenuItem, Menu} from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
 // import HomeIcon from '@mui/icons-material/Home';
@@ -47,6 +47,7 @@ function Header(){
   const location= useLocation();
   const [isAuth, setIsAuth] = useState(true)
   const [logout, setLogout] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   React.useEffect(() => {
     if (!localStorage.getItem("auth")) history.push("/login");
@@ -105,13 +106,37 @@ function Header(){
             display="flex"
             justifyContent="flex-end"
             alignItems="flex-end"
+            onClick={(e) => setOpen(true)}
           >
-              <Button onClick={logoutHandler} type="submit"
+          <Avatar
+             sx={{ width: 30, height: 30, marginLeft:150}}
+           src="/broken-image.jpg" 
+           onClick={(e) => setOpen(true)}
+           />
+              {/* <Button onClick={logoutHandler} type="submit"
                   variant="contained"
                   endIcon={<LogoutOutlinedIcon />}
               >
-               </Button>
+               </Button> */}
           </Box>
+          <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={open}
+        onClose={(e) => setOpen(false)}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>Setting</MenuItem>
+        <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+      </Menu>
          
         </Toolbar>
       </AppBar>
